@@ -4,10 +4,10 @@
     - name: Add required repos
       apt_repository: repo='{{ item }}'
       with_items:
-        - ppa:ondrej/php5
+        - ppa:ondrej/php5-5.6
         - ppa:nginx/stable
 
-    - name: Install symfony2 required packages
+    - name: Install symfony3 required packages
       apt: name={{ item }} state=latest force=yes
       with_items:
         - php5
