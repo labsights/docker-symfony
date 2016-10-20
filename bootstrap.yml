@@ -4,30 +4,31 @@
     - name: Add required repos
       apt_repository: repo='{{ item }}'
       with_items:
-        - ppa:ondrej/php5
+        - ppa:ondrej/php
         - ppa:nginx/stable
 
     - name: Install symfony2 required packages
       apt: name={{ item }} state=latest force=yes
       with_items:
-        - php5
-        - php5-cli
-        - php5-curl
-        - php5-mysql
-        - php5-gd
-        - php5-intl
-        - php5-imagick
-        - php5-imap
-        - php5-mcrypt
-        - php5-memcache
-        - php5-ps
-        - php5-pspell
-        - php5-recode
-        - php5-sqlite
-        - php5-tidy
-        - php5-xcache
+        - php5.6
+        - php5.6-cli
+        - php5.6-curl
+        - php5.6-mongo
+        - php5.6-gd
+        - php5.6-intl
+        - php5.6-imagick
+        - php5.6-imap
+        - php5.6-mcrypt
+        - php5.6-memcache
+        - php5.6-mbstring
+        - php5.6-dom
+        - php5.6-pspell
+        - php5.6-bcmath
+        - php5.6-recode
+        - php5.6-tidy
+        - php5.6-xcache
         - php-pear
-        - php5-fpm
+        - php5.6-fpm
         - nginx
         - mysql-client
 
@@ -44,7 +45,7 @@
       template: src=templates/nginx.conf dest=/etc/nginx/nginx.conf
 
     - name: Add php5-fpm configuration
-      template: src=templates/php-fpm.conf dest=/etc/php5/fpm/php-fpm.conf
+      template: src=templates/php-fpm.conf dest=/etc/php/5.6/fpm/php-fpm.conf
 
     - name: add nginx supervisor config
       template: src=templates/supervisor-nginx.conf dest=/etc/supervisor/conf.d/nginx.conf
